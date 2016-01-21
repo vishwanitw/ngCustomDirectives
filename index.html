@@ -14,20 +14,14 @@
         <div class="span12">
             <div>Here is the basic directive</div>
             <super-man></super-man>
-            <hr>
         </div>
+        <hr>
 
-        <div class="span12">
-            <h3> <div enter>mouseenter and mouseleave directives</div></h3>
-        </div>
-        <hr>
-        <div class="span12">
-            <div input-hover>Hover events</div>
-        </div>
-        <hr>
         <div class="span12">
             <h3>'&' scope in directive</h3>
             <div ng-controller="ChoreCtrl">
+                <kid done="loginChore(chore)"></kid>
+                <kid done="loginChore(chore)"></kid>
                 <kid done="loginChore(chore)"></kid>
             </div>
 
@@ -37,17 +31,32 @@
         <div class="span12">
             <h3>'@' scope in directive</h3>
             <div ng-controller="ChoreCtrl">
-                <div drink flavor="{{ ctrlFlavors }}"></div>
+                <div drink flavor="Strawberry"></div>
+                <!--<div drink flavor="{{ ctrlFlavor }}"></div>-->
             </div>
         </div>
         <hr>
 
         <div class="span12">
+            <h3> <div enter>I am mouseenter directives</div></h3>
+        </div>
+        <hr>
+        <div class="span12">
+            <h3> <div leaves>I am mouseleave directives</div></h3>
+        </div>
+        <hr>
+        <div class="span12">
+            <h3><div input-hover>Hover events</div></h3>
+        </div>
+        <hr>
+
+
+        <div class="span12">
 
             <div class="btn-group" data-toggle="buttons-checkbox">
-                <button type="button" class="btn btn-primary" ng-model="options.facebook" btn-checkbox>Facebook</button>
-                <button type="button" class="btn btn-primary" ng-model="options.twitter" btn-checkbox>Twitter</button>
-                <button type="button" class="btn btn-primary" ng-model="options.google" btn-checkbox>Google+</button>
+                <button type="button" style="margin-left: 10px;" class="btn btn-primary" ng-model="options.facebook" btn-checkbox>Facebook</button>
+                <button type="button" style="margin-left: 10px;" class="btn btn-primary" ng-model="options.twitter" btn-checkbox>Twitter</button>
+                <button type="button" style="margin-left: 10px;" class="btn btn-primary" ng-model="options.google" btn-checkbox>Google+</button>
             </div>
 
             <div>

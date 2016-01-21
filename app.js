@@ -3,15 +3,7 @@
  */
 var app = angular.module('demo', []);
 
-function demoController($scope){
-    console.log('inside controller');
-    $scope.message = 'from angularjs';
-    $scope.options = {
-        facebook : true,
-        google : true,
-        twitter : false
-    };
-}
+
 app.controller('ChoreCtrl', function ($scope) {
     $scope.loginChore = function (chore) {
         alert(chore +' inside loginChore');
@@ -20,6 +12,16 @@ app.controller('ChoreCtrl', function ($scope) {
     $scope.ctrlFlavors = "Blueberryssssss";
 });
 
+app.directive('superMan', function(){
+    return {
+        restrict:'E',
+        template: '<div>This is custom directive template</div>'
+    }
+});
+/*
+  The "&" in your isolated scopes within your AngularJS application will allow you
+  to invoke a method within the scope that your directive lives in.
+ */
 app.directive('kid', function () {
     return {
         restrict: 'E',
@@ -30,23 +32,26 @@ app.directive('kid', function () {
     }
 });
 
+/*
+The "@" in your isolated scopes within your AngularJS application will allow you
+to invoke a string. ie it will treated as a string whatever you are passing in
+flavor method
+*/
 
 app.directive('drink', function () {
     return {
         scope: {
             flavor:'@'
         },
-        template :'<div>{{ flavor }}</div>'
+        template :'<div>{{ flavor }}</div>',
+        link: function (scope,element,attr) {
+            scope.flavor = attr.flavor;
+
+        }
     }
 })
 
-app.directive('superMan', function(){
-    return {
-        restrict:'E',
-        template: '<div>This is custom directive template</div>'
-    }
-});
-
+//DOM manipulation
 app.directive('enter', function () {
     return {
         link : function (scope, element, attr){
@@ -79,7 +84,17 @@ app.directive('inputHover', function () {
 });
 
 
+function demoController($scope){
+    console.log('inside controller');
+    $scope.message = 'from angularjs';
+    $scope.options = {
+        facebook : true,
+        google : true,
+        twitter : false
+    };
+}
 
+//injecting model in the directive
 app.directive('btnCheckbox', function(){
     return {
         require: 'ngModel',
